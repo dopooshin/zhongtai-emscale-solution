@@ -1,0 +1,3137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中泰深冷4万级深冷空分循环水系统电磁阻垢+电化学除垢组合方案</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #0A2463;
+            --secondary-blue: #1E3F8A;
+            --accent-blue: #3E92CC;
+            --light-blue: #D8E4F0;
+            --water-blue: #00B4D8;
+            --water-light: #90E0EF;
+            --industrial-gray: #2D3436;
+            --light-gray: #636E72;
+            --bg-gray: #F5F6FA;
+            --card-white: #FFFFFF;
+            --success-green: #00B894;
+            --warning-orange: #F39C12;
+            --danger-red: #E74C3C;
+            --gold: #D4A017;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-gray);
+            color: var(--industrial-gray);
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        /* 封面 */
+        .cover {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0A2463 0%, #1E3F8A 40%, #3E92CC 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            padding: 40px 20px;
+        }
+
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .cover-logo {
+            margin-bottom: 30px;
+        }
+
+        .cover-logo img {
+            height: 80px;
+            filter: brightness(0) invert(1);
+            opacity: 0.95;
+        }
+
+        .cover-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .cover h1 {
+            font-size: 2.6rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            line-height: 1.3;
+        }
+
+        .cover h2 {
+            font-size: 1.4rem;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
+        .cover-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .cover-info-item {
+            text-align: left;
+        }
+
+        .cover-info-item .label {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: 5px;
+        }
+
+        .cover-info-item .value {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .cover-bottom {
+            position: absolute;
+            bottom: 40px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+
+        /* 目录 */
+        .toc-section {
+            background: white;
+            padding: 60px 20px;
+        }
+
+        .toc-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .toc-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .toc-list {
+            list-style: none;
+            counter-reset: toc-counter;
+        }
+
+        .toc-list li {
+            counter-increment: toc-counter;
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .toc-list li:hover {
+            background: var(--bg-gray);
+            padding-left: 30px;
+        }
+
+        .toc-list li::before {
+            content: counter(toc-counter, decimal-leading-zero);
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--accent-blue);
+            margin-right: 20px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .toc-list li span {
+            flex: 1;
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        .toc-list li .page {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+
+        /* 内容区 */
+        .content-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-number {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--light-blue);
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            z-index: 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            position: relative;
+            z-index: 1;
+            padding-left: 20px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 5px;
+            height: 70%;
+            background: linear-gradient(180deg, var(--primary-blue), var(--accent-blue));
+            border-radius: 3px;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--light-gray);
+            margin-top: 10px;
+            padding-left: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 卡片 */
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            margin-bottom: 25px;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title .icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+        }
+
+        /* 信息网格 */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .info-item {
+            background: var(--bg-gray);
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 4px solid var(--accent-blue);
+        }
+
+        .info-item .label {
+            font-size: 0.85rem;
+            color: var(--light-gray);
+            margin-bottom: 6px;
+        }
+
+        .info-item .value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        /* 表格 */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            padding: 14px 16px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table th:first-child {
+            border-radius: 10px 0 0 0;
+        }
+
+        .data-table th:last-child {
+            border-radius: 0 10px 0 0;
+        }
+
+        .data-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .data-table tr:hover td {
+            background: var(--bg-gray);
+        }
+
+        .data-table tr:last-child td:first-child {
+            border-radius: 0 0 0 10px;
+        }
+
+        .data-table tr:last-child td:last-child {
+            border-radius: 0 0 10px 0;
+        }
+
+        /* 设备分布示意图 */
+        .diagram-container {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            margin-bottom: 25px;
+            overflow-x: auto;
+        }
+
+        .diagram-container svg {
+            width: 100%;
+            height: auto;
+            min-width: 800px;
+        }
+
+        /* 安装示意图 */
+        .install-diagram {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .install-diagram img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .install-diagram .caption {
+            margin-top: 15px;
+            font-size: 0.95rem;
+            color: var(--light-gray);
+        }
+
+        /* 风险等级 */
+        .risk-high {
+            color: var(--danger-red);
+            font-weight: 700;
+        }
+
+        .risk-medium {
+            color: var(--warning-orange);
+            font-weight: 700;
+        }
+
+        .risk-low {
+            color: var(--success-green);
+            font-weight: 700;
+        }
+
+        /* 图片展示 */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .image-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .image-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .image-card .caption {
+            padding: 15px;
+            font-size: 0.9rem;
+            color: var(--light-gray);
+            text-align: center;
+        }
+
+        /* 资质证书 */
+        .cert-showcase {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .cert-showcase img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        /* 效果验证 */
+        .verify-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .verify-step {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            position: relative;
+            border-top: 4px solid var(--success-green);
+        }
+
+        .verify-step .step-number {
+            position: absolute;
+            top: -15px;
+            left: 25px;
+            background: var(--success-green);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .verify-step h4 {
+            margin-top: 10px;
+            margin-bottom: 12px;
+            color: var(--primary-blue);
+            font-size: 1.05rem;
+        }
+
+        .verify-step p {
+            font-size: 0.9rem;
+            color: var(--light-gray);
+            line-height: 1.7;
+        }
+
+        /* 公司介绍 */
+        .company-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .company-values {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .value-item {
+            background: var(--bg-gray);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .value-item .value-title {
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+
+        .value-item .value-desc {
+            font-size: 0.8rem;
+            color: var(--light-gray);
+        }
+
+        /* 成功案例 - 竖屏三页展示 */
+        .case-pages {
+            margin: 25px 0;
+        }
+
+        .case-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 40px;
+            position: relative;
+            background: white;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+
+        .case-page-number {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--light-blue);
+            font-family: 'Courier New', monospace;
+            z-index: 0;
+        }
+
+        .case-page-label {
+            position: absolute;
+            top: 45px;
+            right: 40px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .case-page-image {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+            position: relative;
+            z-index: 1;
+        }
+
+        .case-page-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .case-page-info {
+            margin-top: 40px;
+            text-align: center;
+            max-width: 700px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .case-page-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+
+        .case-page-desc {
+            font-size: 1rem;
+            color: var(--light-gray);
+            line-height: 1.9;
+        }
+
+        .case-page-divider {
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-blue));
+            border-radius: 2px;
+            margin: 20px auto;
+        }
+
+        /* 电化学除垢设备 */
+        .electrochem-section {
+            margin: 25px 0;
+        }
+
+        .electrochem-principle {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .electrochem-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border-left: 4px solid var(--accent-blue);
+        }
+
+        .electrochem-card h4 {
+            font-size: 1.1rem;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .electrochem-card h4::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            background: var(--accent-blue);
+            border-radius: 50%;
+        }
+
+        .electrochem-card p {
+            font-size: 0.9rem;
+            color: var(--light-gray);
+            line-height: 1.8;
+        }
+
+        .electrochem-advantages {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .electrochem-advantage-item {
+            text-align: center;
+            padding: 25px 15px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .electrochem-advantage-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .electrochem-advantage-icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 15px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .electrochem-advantage-item h4 {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .electrochem-advantage-item p {
+            font-size: 0.8rem;
+            color: var(--light-gray);
+            line-height: 1.6;
+        }
+
+        .electrochem-params-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .electrochem-params-table th {
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+            color: white;
+            padding: 15px 20px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .electrochem-params-table td {
+            padding: 12px 20px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+        }
+
+        .electrochem-params-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .electrochem-params-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .electrochem-flow {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .electrochem-flow h4 {
+            font-size: 1.1rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .flow-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .flow-step {
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+            padding: 15px 10px;
+            background: linear-gradient(135deg, #f0f7ff, #e8f4fd);
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .flow-step-icon {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 10px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .flow-step p {
+            font-size: 0.8rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .flow-arrow {
+            color: var(--accent-blue);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .electrochem-comparison {
+            margin: 30px 0;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .comparison-table .label {
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-dark);
+            background: #f0f7ff;
+        }
+
+        .comparison-table .good {
+            color: var(--success-green);
+            font-weight: 600;
+        }
+
+        .comparison-table .bad {
+            color: var(--danger-red);
+        }
+
+        /* 价格表 */
+        .pricing-section {
+            margin: 25px 0;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--primary-blue);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-8px);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+            color: white;
+            padding: 5px 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transform: rotate(45deg);
+        }
+
+        .pricing-model {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+
+        .pricing-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .pricing-price {
+            margin: 25px 0;
+        }
+
+        .pricing-price .amount {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            line-height: 1;
+        }
+
+        .pricing-price .unit {
+            font-size: 1.2rem;
+            color: var(--light-gray);
+            margin-top: 8px;
+        }
+
+        .pricing-price .currency {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            vertical-align: top;
+        }
+
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 25px 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.9rem;
+            color: var(--light-gray);
+            display: flex;
+            align-items: center;
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-features li::before {
+            content: "✓";
+            color: var(--success-green);
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 1rem;
+        }
+
+        .pricing-note {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            color: var(--light-gray);
+            line-height: 1.8;
+        }
+
+        .pricing-note strong {
+            color: var(--primary-blue);
+        }
+
+        /* 联系方式 */
+        .contact-section {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-item .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .contact-item .contact-info .label {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        .contact-item .contact-info .value {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* 页脚 */
+        .footer {
+            background: var(--primary-blue);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        .footer p {
+            opacity: 0.7;
+            font-size: 0.85rem;
+        }
+
+        /* 设备配置卡片 */
+        .device-config {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .device-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .device-card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-5px);
+        }
+
+        .device-card-header {
+            padding: 20px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .device-card-header.e200 {
+            background: linear-gradient(135deg, #00B4D8, #48CAE4);
+        }
+
+        .device-card-header.e500 {
+            background: linear-gradient(135deg, #3E92CC, #5DADE2);
+        }
+
+        .device-card-header.e600 {
+            background: linear-gradient(135deg, #0A2463, #1E3F8A);
+        }
+
+        .device-card-header h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .device-card-header .qty {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: rgba(255,255,255,0.25);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .device-card-body {
+            padding: 20px;
+        }
+
+        .device-card-body .location {
+            font-size: 0.9rem;
+            color: var(--light-gray);
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .device-card-body .params {
+            list-style: none;
+        }
+
+        .device-card-body .params li {
+            padding: 8px 0;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .device-card-body .params li .param-name {
+            color: var(--light-gray);
+        }
+
+        .device-card-body .params li .param-value {
+            font-weight: 600;
+            color: var(--industrial-gray);
+        }
+
+        /* 方案优势 */
+        .advantages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .advantage-item {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease;
+        }
+
+        .advantage-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .advantage-item .adv-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .advantage-item h4 {
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+
+        .advantage-item p {
+            font-size: 0.85rem;
+            color: var(--light-gray);
+            line-height: 1.6;
+        }
+
+        /* 分隔线 */
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+            margin: 40px 0;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .cover h1 {
+                font-size: 1.8rem;
+            }
+            
+            .cover-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .company-intro {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* 打印样式优化 */
+        @media print {
+            body {
+                background: white;
+                font-size: 14px;
+            }
+
+            .cover {
+                min-height: auto;
+                height: 100vh;
+                page-break-after: always;
+            }
+
+            .toc-section {
+                page-break-after: always;
+            }
+
+            .content-section {
+                padding: 30px 20px;
+                page-break-inside: avoid;
+            }
+
+            .card {
+                box-shadow: none;
+                border: 1px solid #eee;
+                page-break-inside: avoid;
+            }
+
+            .case-page {
+                min-height: auto;
+                height: auto;
+                padding: 30px 20px;
+                page-break-after: always;
+                box-shadow: none;
+                border: 1px solid #eee;
+            }
+
+            .case-page:last-child {
+                page-break-after: auto;
+            }
+
+            .case-page-image {
+                max-width: 100%;
+            }
+
+            .case-page-number {
+                font-size: 3rem;
+            }
+
+            .diagram-container {
+                box-shadow: none;
+                border: 1px solid #eee;
+                page-break-inside: avoid;
+            }
+
+            .install-diagram {
+                box-shadow: none;
+                border: 1px solid #eee;
+                page-break-inside: avoid;
+            }
+
+            .contact-section {
+                page-break-inside: avoid;
+            }
+
+            .footer {
+                display: none;
+            }
+
+            .verify-step {
+                page-break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #eee;
+            }
+
+            .device-card {
+                page-break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #eee;
+            }
+
+            .advantage-item {
+                page-break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #eee;
+            }
+
+            .info-item {
+                page-break-inside: avoid;
+            }
+
+            table {
+                page-break-inside: avoid;
+            }
+
+            img {
+                max-width: 100% !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 封面 -->
+    <section class="cover">
+        <div class="cover-content">
+            <div class="cover-logo">
+                <img src="https://aka.doubaocdn.com/s/T6UhcTia9o" alt="威马集团">
+            </div>
+            <div class="cover-badge">📋 技术方案</div>
+            <h1>循环水系统分布式电磁阻垢<br>+电化学除垢组合方案</h1>
+            <h2>中泰深冷4万级深冷空分装置</h2>
+            
+            <div style="margin-top: 30px;">
+                <div style="display: inline-block; background: rgba(255,255,255,0.1); padding: 12px 30px; border-radius: 8px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15);">
+                    <span style="font-size: 0.9rem; opacity: 0.8;">SMS 分布式电磁激励系统</span>
+                </div>
+            </div>
+
+            <div class="cover-info">
+                <div class="cover-info-item">
+                    <div class="label">客户单位</div>
+                    <div class="value">中泰深冷投资运营（山东）有限公司</div>
+                </div>
+                <div class="cover-info-item">
+                    <div class="label">实施单位</div>
+                    <div class="value">威马（青岛）新能源科技有限公司</div>
+                </div>
+                <div class="cover-info-item">
+                    <div class="label">项目规模</div>
+                    <div class="value">40000 Nm³/h 深冷空分装置</div>
+                </div>
+                <div class="cover-info-item">
+                    <div class="label">方案版本</div>
+                    <div class="value">V1.0</div>
+                </div>
+            </div>
+        </div>
+        <div class="cover-bottom">
+            <p>威马（青岛）新能源科技有限公司 · 版权所有</p>
+        </div>
+    </section>
+
+    <!-- 目录 -->
+    <section class="toc-section">
+        <div class="toc-container">
+            <h2 class="toc-title">目 录</h2>
+            <ol class="toc-list">
+                <li><span>项目概况</span><span class="page">01</span></li>
+                <li><span>水质分析与结垢风险评估</span><span class="page">02</span></li>
+                <li><span>解决方案设计</span><span class="page">03</span></li>
+                <li><span>电磁阻垢设备配置</span><span class="page">04</span></li>
+                <li><span>电化学除垢设备配置</span><span class="page">05</span></li>
+                <li><span>安装示意图</span><span class="page">06</span></li>
+                <li><span>效果验证方案</span><span class="page">07</span></li>
+                <li><span>实施单位介绍</span><span class="page">08</span></li>
+                <li><span>资质文件</span><span class="page">09</span></li>
+                <li><span>成功案例</span><span class="page">10</span></li>
+                <li><span>价格方案</span><span class="page">11</span></li>
+                <li><span>联系方式</span><span class="page">12</span></li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- 第一章：项目概况 -->
+    <section class="content-section">
+        <div class="section-header">
+            <div class="section-number">01</div>
+            <h2 class="section-title">项目概况</h2>
+            <p class="section-subtitle">Project Overview</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <span class="icon">🏭</span>
+                项目背景
+            </div>
+            <p style="margin-bottom: 15px;">
+                <strong>中泰深冷投资运营（山东）有限公司</strong>是杭州中泰深冷技术股份有限公司（股票代码：300435）全资子公司，位于山东省济南市章丘区，投资建设的<strong>4万等级深冷空分供气项目</strong>于2023年7月一次开车成功，2023年10月正式投产。
+            </p>
+            <p style="margin-bottom: 15px;">
+                该项目全套空分工艺由中泰自主研发、设计、制造和施工，采用<strong>汽轮机驱动</strong>的大型离心式空压机，装置氧、氮纯度均优于设计值，工况稳定可靠，主要为下游化工企业提供工业气体产品。
+            </p>
+            <p>
+                随着装置运行时间增长，循环水系统结垢问题逐渐显现，换热效率下降，能耗上升。同时，
+                现场循环水排污有时会受到环保管控限制，无法正常排污时钙镁离子浓缩加速，结垢风险加剧。
+                为保障装置长期高效稳定运行，拟采用<strong>「电磁阻垢 + 电化学除垢」组合方案</strong>：
+                电磁阻垢实现全系统在线阻垢，电化学除垢作为排污管控期间的安全生产保障措施，
+                双重保障循环水系统稳定运行。
+            </p>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-item">
+                <div class="label">项目名称</div>
+                <div class="value" style="font-size: 1rem;">4万等级空分供气项目</div>
+            </div>
+            <div class="info-item">
+                <div class="label">装置规模</div>
+                <div class="value">40000 Nm³/h</div>
+            </div>
+            <div class="info-item">
+                <div class="label">投产时间</div>
+                <div class="value">2023年10月</div>
+            </div>
+            <div class="info-item">
+                <div class="label">驱动方式</div>
+                <div class="value">汽轮机驱动</div>
+            </div>
+            <div class="info-item">
+                <div class="label">项目地点</div>
+                <div class="value" style="font-size: 1rem;">山东济南章丘区</div>
+            </div>
+            <div class="info-item">
+                <div class="label">工艺流程</div>
+                <div class="value" style="font-size: 1rem;">深冷精馏法</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <span class="icon">💧</span>
+                循环水系统概况
+            </div>
+            <p style="margin-bottom: 15px;">
+                4万级深冷空分装置循环水系统为敞开式循环冷却水系统，循环水量约<strong>8000~10000 m³/h</strong>（含汽轮机凝汽器），冷却器数量约60余台，分布在全厂各工艺系统。
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-top: 20px;">
+                <div style="background: var(--bg-gray); padding: 15px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary-blue);">~9000</div>
+                    <div style="font-size: 0.85rem; color: var(--light-gray);">循环水量 m³/h</div>
+                </div>
+                <div style="background: var(--bg-gray); padding: 15px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary-blue);">≤28</div>
+                    <div style="font-size: 0.85rem; color: var(--light-gray);">供水温度 ℃</div>
+                </div>
+                <div style="background: var(--bg-gray); padding: 15px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary-blue);">36~40</div>
+                    <div style="font-size: 0.85rem; color: var(--light-gray);">回水温度 ℃</div>
+                </div>
+                <div style="background: var(--bg-gray); padding: 15px; border-radius: 10px; text-align: center;">
+                    <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary-blue);">~60</div>
+                    <div style="font-size: 0.85rem; color: var(--light-gray);">冷却器数量（台）</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- 第二章：水质分析与结垢风险评估 -->
+    <section class="content-section">
+        <div class="section-header">
+            <div class="section-number">02</div>
+            <h2 class="section-title">水质分析与结垢风险评估</h2>
+            <p class="section-subtitle">Water Quality Analysis & Scale Risk Assessment</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <span class="icon">🧪</span>
+                水质检测数据
+            </div>
+            <p style="margin-bottom: 15px; color: var(--light-gray); font-size: 0.9rem;">
+                以下为现场循环水系统补水与循环水的水质检测数据：
+            </p>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>检测项目</th>
+                        <th>补水</th>
+                        <th>循环水</th>
+                        <th>浓缩倍数</th>
+                        <th>结垢倾向</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>pH</td>
+                        <td>7.8</td>
+                        <td>6.7</td>
+                        <td>—</td>
+                        <td><span class="risk-medium">中等</span></td>
+                    </tr>
+                    <tr>
+                        <td>电导率 (μS/cm)</td>
+                        <td>877</td>
+                        <td>3780</td>
+                        <td>4.3 倍</td>
+                        <td><span class="risk-high">高</span></td>
+                    </tr>
+                    <tr>
+                        <td>碱度 (mg/L)</td>
+                        <td>160</td>
+                        <td>15</td>
+                        <td>—</td>
+                        <td><span class="risk-low">低</span></td>
+                    </tr>
+                    <tr>
+                        <td>钙硬度 (mg/L)</td>
+                        <td>104</td>
+                        <td>312</td>
+                        <td>3.0 倍</td>
+                        <td><span class="risk-high">高</span></td>
+                    </tr>
+                    <tr>
+                        <td>镁 (mg/L)</td>
+                        <td>25</td>
+                        <td>93</td>
+                        <td>3.7 倍</td>
+                        <td><span class="risk-medium">中等</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>总硬度 (mg/L)</strong></td>
+                        <td><strong>363</strong></td>
+                        <td><strong>1197</strong></td>
+                        <td><strong>3.3 倍</strong></td>
+                        <td><span class="risk-high">很高</span></td>
+                    </tr>
+                    <tr>
+                        <td>氯离子 (mg/L)</td>
+                        <td>143</td>
+                        <td>517</td>
+                        <td>3.6 倍</td>
+                        <td><span class="risk-medium">腐蚀风险</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #FFF3E0, #FFE0B2); border-radius: 16px; padding: 25px; margin: 25px 0;">
+            <h4 style="color: #E65100; margin-bottom: 15px; font-size: 1.1rem; display: flex; align-items: center; gap: 10px;">
+                ⚠️ 结垢风险评估结论
+            </h4>
+            <ul style="list-style: none; padding: 0;">
+                <li style="padding: 8px 0; padding-left: 25px; position: relative; color: #5D4037; font-size: 0.95rem;">
+                    <span style="position: absolute; left: 0; color: #F57C00;">⚠</span>
+                    <strong>总硬度高达1197 mg/L</strong>，远超国家标准（GB50050规定循环水总硬度宜≤700mg/L），结垢风险等级为<strong>很高</strong>
+                </li>
+                <li style="padding: 8px 0; padding-left: 25px; position: relative; color: #5D4037; font-size: 0.95rem;">
+                    <span style="position: absolute; left: 0; color: #F57C00;">⚠</span>
+                    <strong>浓缩倍数约3.3倍</strong>，处于较高水平，盐分富集严重
+                </li>
+                <li style="padding: 8px 0; padding-left: 25px; position: relative; color: #5D4037; font-size: 0.95rem;">
+                    <span style="position: absolute; left: 0; color: #F57C00;">⚠</span>
+                    <strong>钙硬度312 mg/L</strong>，碳酸钙结垢倾向明显
+                </li>
+                <li style="padding: 8px 0; padding-left: 25px; position: relative; color: #5D4037; font-size: 0.95rem;">
+                    <span style="position: absolute; left: 0; color: #F57C00;">⚠</span>
+                    循环水pH 6.7偏酸性，碱度仅15mg/L，说明当前可能采用了加酸处理，但总硬度仍然很高
+                </li>
+                <li style="padding: 8px 0; padding-left: 25px; position: relative; color: #5D4037; font-size: 0.95rem;">
+                    <span style="position: absolute; left: 0; color: #F57C00;">⚠</span>
+                    电导率3780 μS/cm，说明水中溶解固形物含量高，结垢和腐蚀双重风险
+                </li>
+                <li style="padding: 8px 0; padding-left: 25px; position: relative; color: #5D4037; font-size: 0.95rem;">
+                    <span style="position: absolute; left: 0; color: #F57C00;">⚠</span>
+                    空分装置存在"冷结垢"特有现象——即使低温段（10~20℃）因蒸发浓缩仍会结垢
+                </li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <span class="icon">🔥</span>
+                结垢对空分装置的主要危害
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                <div style="padding: 15px; background: #FFF5F5; border-radius: 10px; border-left: 4px solid var(--danger-red);">
+                    <h4 style="color: var(--danger-red); margin-bottom: 8px;">汽轮机凝汽器结垢</h4>
+                    <p style="font-size: 0.9rem; color: #666;">真空度下降 → 汽轮机效率降低 → 全厂能耗上升。真空每降1kPa，汽耗增加1.5~2%</p>
+                </div>
+                <div style="padding: 15px; background: #FFF8E1; border-radius: 10px; border-left: 4px solid var(--warning-orange);">
+                    <h4 style="color: #E65100; margin-bottom: 8px;">空压机冷却器结垢</h4>
+                    <p style="font-size: 0.9rem; color: #666;">排气温度升高 → 空压机效率下降 → 电耗/汽耗增加，严重时导致喘振停机</p>
+                </div>
+                <div style="padding: 15px; background: #E8F5E9; border-radius: 10px; border-left: 4px solid var(--success-green);">
+                    <h4 style="color: #2E7D32; margin-bottom: 8px;">空冷塔填料结垢</h4>
+                    <p style="font-size: 0.9rem; color: #666;">布水不均、气水接触不良 → 空气出口温度升高 → 分子筛负荷加重 → 产品纯度受影响</p>
+                </div>
+                <div style="padding: 15px; background: #E3F2FD; border-radius: 10px; border-left: 4px solid var(--accent-blue);">
+                    <h4 style="color: #1565C0; margin-bottom: 8px;">氧压机冷却器结垢</h4>
+                    <p style="font-size: 0.9rem; color: #666;">排气温度过高 → 氧气安全风险增大，高温下氧气管道更易发生燃烧事故</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- 第三章：解决方案设计 -->
+    <section class="content-section">
+        <div class="section-header">
+            <div class="section-number">03</div>
+            <h2 class="section-title">解决方案设计</h2>
+            <p class="section-subtitle">Solution Design</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <span class="icon">💡</span>
+                方案概述
+            </div>
+            <p style="margin-bottom: 15px;">
+                针对中泰深冷4万空分循环水系统的特点，本方案采用<strong>「电磁阻垢 + 电化学除垢」组合方案</strong>，
+                在关键用水点分别安装电磁阻垢设备，实现全系统在线阻垢；同时配置全自动电化学除垢设备，
+                作为排污管控期间的安全生产保障措施，双重保障系统稳定运行。
+            </p>
+            <p style="margin-bottom: 15px;">
+                <strong>电磁阻垢</strong>：通过高频电磁场改变碳酸钙晶体形态，使其不易附着在管道和换热器表面，
+                实现全管道、全系统在线阻垢。<strong>安装特点：管道外部缠绕线圈，无需切割管道，不影响生产运行，安装方便。</strong>
+            </p>
+            <p style="margin-bottom: 0;">
+                <strong>电化学除垢</strong>：通过电解作用将水中钙镁离子以固体水垢形式析出并排出系统，
+                <strong>在排污受限、无法正常排污的情况下，有效降低钙镁离子浓缩速度，延缓结垢周期，
+                作为安全生产保障措施，避免结垢加剧导致的设备故障和停机风险</strong>。
+                <strong>安装特点：需建设旁路管道，切割主管道焊接旁路接口，配套建设水垢收集池。</strong>
+            </p>
+            </p>
+            <p>
+                系统采用"主机+线圈"分布式架构，一个主机可控制多组线圈，安装在管道外部，无需切割管道、无需停机施工，不改变水质化学成分，通过物理电磁场作用改变碳酸钙晶体形态，使其不易附着在管壁和换热面上。
+            </p>
+        </div>
+
+        <div class="advantages">
+            <div class="advantage-item">
+                <div class="adv-icon">🔧</div>
+                <h4>不停工安装</h4>
+                <p>管道外部缠绕线圈，无需切割管道，装置正常运行即可施工</p>
+            </div>
+            <div class="advantage-item">
+                <div class="adv-icon">🌿</div>
+                <h4>绿色环保</h4>
+                <p>纯物理方法，无需添加化学药剂，无二次污染</p>
+            </div>
+            <div class="advantage-item">
+                <div class="adv-icon">💰</div>
+                <h4>运行成本低</h4>
+                <p>仅消耗少量电能，无耗材，年运行费用极低</p>
+            </div>
+            <div class="advantage-item">
+                <div class="adv-icon">📱</div>
+                <h4>智能操作</h4>
+                <p>大屏触控本地操作，实时监测运行状态，操作简便直观</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <span class="icon">📍</span>
+                设备分布方案
+            </div>
+            <p style="margin-bottom: 20px; color: var(--light-gray); font-size: 0.9rem;">
+                根据空分厂循环水系统布局，共配置 <strong>6台</strong> 分布式电磁阻垢设备，覆盖三大核心用水区域：
+            </p>
+        </div>
+
+        <!-- 设备分布示意图 -->
+        <div class="diagram-container">
+            <h3 style="text-align: center; color: var(--primary-blue); margin-bottom: 25px;">空分厂循环水系统设备分布示意图</h3>
+            <svg viewBox="0 0 1000 650" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="pipeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#90A4AE"/>
+                        <stop offset="50%" style="stop-color:#CFD8DC"/>
+                        <stop offset="100%" style="stop-color:#90A4AE"/>
+                    </linearGradient>
+                    <filter id="shadow3" x="-20%" y="-20%" width="140%" height="140%">
+                        <feDropShadow dx="0" dy="3" stdDeviation="5" flood-opacity="0.15"/>
+                    </filter>
+                </defs>
+
+                <rect width="1000" height="650" fill="#FAFBFC" rx="10"/>
+                <text x="500" y="30" text-anchor="middle" font-size="14" fill="#636E72">循环水供水方向 →</text>
+
+                <!-- 冷却塔 -->
+                <g filter="url(#shadow3)">
+                    <rect x="30" y="520" width="140" height="100" rx="8" fill="white" stroke="#00ACC1" stroke-width="2"/>
+                    <text x="100" y="550" text-anchor="middle" font-size="13" font-weight="700" fill="#00838F">冷却塔</text>
+                    <text x="100" y="570" text-anchor="middle" font-size="10" fill="#00ACC1">循环水泵站</text>
+                    <text x="100" y="590" text-anchor="middle" font-size="10" fill="#00ACC1">集水池</text>
+                    <text x="100" y="610" text-anchor="middle" font-size="9" fill="#B0BEC5">总循环量 ~9000m³/h</text>
+                </g>
+
+                <!-- 总供水主管 -->
+                <rect x="170" y="555" width="800" height="30" rx="15" fill="url(#pipeGrad)" stroke="#78909C" stroke-width="1"/>
+                <text x="570" y="575" text-anchor="middle" font-size="11" fill="#546E7A" font-weight="600">循环水供水总管</text>
+
+                <!-- 分支1：汽轮机 -->
+                <g>
+                    <rect x="200" y="80" width="200" height="120" rx="10" fill="white" stroke="#0A2463" stroke-width="2.5" filter="url(#shadow3)"/>
+                    <text x="300" y="110" text-anchor="middle" font-size="14" font-weight="700" fill="#0A2463">汽轮机系统</text>
+                    <text x="300" y="132" text-anchor="middle" font-size="11" fill="#636E72">凝汽器（表冷器）</text>
+                    <text x="300" y="152" text-anchor="middle" font-size="11" fill="#636E72">循环水量 ~2000m³/h</text>
+                    <text x="300" y="172" text-anchor="middle" font-size="10" fill="#E53935">⚠️ 结垢风险：极高</text>
+                    <text x="300" y="190" text-anchor="middle" font-size="9" fill="#B0BEC5">真空度敏感，影响全厂效率</text>
+                    
+                    <rect x="230" y="200" width="60" height="355" fill="url(#pipeGrad)" stroke="#78909C" stroke-width="1"/>
+                    <rect x="310" y="200" width="60" height="355" fill="url(#pipeGrad)" stroke="#78909C" stroke-width="1"/>
+                    <text x="260" y="380" text-anchor="middle" font-size="10" fill="#546E7A" transform="rotate(-90, 260, 380)">DN600 进水管</text>
+                    <text x="340" y="380" text-anchor="middle" font-size="10" fill="#546E7A" transform="rotate(-90, 340, 380)">DN600 进水管</text>
+                    
+                    <g>
+                        <rect x="210" y="280" width="100" height="50" rx="6" fill="#0A2463" filter="url(#shadow3)"/>
+                        <text x="260" y="302" text-anchor="middle" font-size="11" font-weight="700" fill="white">SMS-E-600</text>
+                        <text x="260" y="318" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)">1# 主机</text>
+                        <circle cx="245" cy="295" r="4" fill="#4CAF50">
+                            <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                    </g>
+                    <g>
+                        <rect x="290" y="350" width="100" height="50" rx="6" fill="#0A2463" filter="url(#shadow3)"/>
+                        <text x="340" y="372" text-anchor="middle" font-size="11" font-weight="700" fill="white">SMS-E-600</text>
+                        <text x="340" y="388" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)">2# 主机</text>
+                        <circle cx="325" cy="365" r="4" fill="#4CAF50">
+                            <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                    </g>
+                </g>
+
+                <!-- 分支2：空分主机 -->
+                <g>
+                    <rect x="430" y="80" width="200" height="120" rx="10" fill="white" stroke="#1E3F8A" stroke-width="2.5" filter="url(#shadow3)"/>
+                    <text x="530" y="110" text-anchor="middle" font-size="14" font-weight="700" fill="#1E3F8A">空分主机系统</text>
+                    <text x="530" y="132" text-anchor="middle" font-size="11" fill="#636E72">空压机冷却器 + 空冷塔</text>
+                    <text x="530" y="152" text-anchor="middle" font-size="11" fill="#636E72">循环水量 ~3500m³/h</text>
+                    <text x="530" y="172" text-anchor="middle" font-size="10" fill="#FF9800">⚠️ 结垢风险：高</text>
+                    <text x="530" y="190" text-anchor="middle" font-size="9" fill="#B0BEC5">影响空压机效率和空冷塔效果</text>
+                    
+                    <rect x="460" y="200" width="60" height="355" fill="url(#pipeGrad)" stroke="#78909C" stroke-width="1"/>
+                    <rect x="540" y="200" width="60" height="355" fill="url(#pipeGrad)" stroke="#78909C" stroke-width="1"/>
+                    <text x="490" y="380" text-anchor="middle" font-size="10" fill="#546E7A" transform="rotate(-90, 490, 380)">DN450 进水管</text>
+                    <text x="570" y="380" text-anchor="middle" font-size="10" fill="#546E7A" transform="rotate(-90, 570, 380)">DN450 进水管</text>
+                    
+                    <g>
+                        <rect x="440" y="280" width="100" height="50" rx="6" fill="#1E3F8A" filter="url(#shadow3)"/>
+                        <text x="490" y="302" text-anchor="middle" font-size="11" font-weight="700" fill="white">SMS-E-500</text>
+                        <text x="490" y="318" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)">3# 主机</text>
+                        <circle cx="475" cy="295" r="4" fill="#4CAF50">
+                            <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                    </g>
+                    <g>
+                        <rect x="520" y="350" width="100" height="50" rx="6" fill="#1E3F8A" filter="url(#shadow3)"/>
+                        <text x="570" y="372" text-anchor="middle" font-size="11" font-weight="700" fill="white">SMS-E-500</text>
+                        <text x="570" y="388" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.7)">4# 主机</text>
+                        <circle cx="555" cy="365" r="4" fill="#4CAF50">
+                            <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                    </g>
+                </g>
+
+                <!-- 分支3：冰机系统 -->
+                <g>
+                    <rect x="660" y="100" width="180" height="100" rx="10" fill="white" stroke="#00B4D8" stroke-width="2.5" filter="url(#shadow3)"/>
+                    <text x="750" y="130" text-anchor="middle" font-size="13" font-weight="700" fill="#00838F">空分厂冰机系统</text>
+                    <text x="750" y="152" text-anchor="middle" font-size="11" fill="#636E72">冷水机组冷凝器</text>
+                    <text x="750" y="172" text-anchor="middle" font-size="10" fill="#FF9800">⚠️ 结垢风险：中高</text>
+                    <text x="750" y="190" text-anchor="middle" font-size="9" fill="#B0BEC5">影响制冷效率</text>
+                    
+                    <rect x="700" y="200" width="40" height="355" fill="url(#pipeGrad)" stroke="#78909C" stroke-width="1"/>
+                    <text x="720" y="380" text-anchor="middle" font-size="10" fill="#546E7A" transform="rotate(-90, 720, 380)">DN150</text>
+                    
+                    <g>
+                        <rect x="680" y="300" width="80" height="45" rx="6" fill="#00B4D8" filter="url(#shadow3)"/>
+                        <text x="720" y="320" text-anchor="middle" font-size="10" font-weight="700" fill="white">SMS-E-200</text>
+                        <text x="720" y="335" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.7)">5# 主机</text>
+                        <circle cx="695" cy="315" r="3" fill="#4CAF50">
+                            <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                    </g>
+                </g>
+
+                <!-- 分支4：预冷冰机 -->
+                <g>
+                    <rect x="860" y="100" width="120" height="100" rx="10" fill="white" stroke="#00B4D8" stroke-width="2.5" filter="url(#shadow3)"/>
+                    <text x="920" y="130" text-anchor="middle" font-size="12" font-weight="700" fill="#00838F">预冷系统冰机</text>
+                    <text x="920" y="152" text-anchor="middle" font-size="10" fill="#636E72">冷水机组</text>
+                    <text x="920" y="172" text-anchor="middle" font-size="10" fill="#FF9800">⚠️ 中高风险</text>
+                    <text x="920" y="190" text-anchor="middle" font-size="9" fill="#B0BEC5">辅助冷冻水</text>
+                    
+                    <rect x="890" y="200" width="40" height="355" fill="url(#pipeGrad)" stroke="#78909C" stroke-width="1"/>
+                    <text x="910" y="380" text-anchor="middle" font-size="10" fill="#546E7A" transform="rotate(-90, 910, 380)">DN150</text>
+                    
+                    <g>
+                        <rect x="870" y="320" width="80" height="45" rx="6" fill="#00B4D8" filter="url(#shadow3)"/>
+                        <text x="910" y="340" text-anchor="middle" font-size="10" font-weight="700" fill="white">SMS-E-200</text>
+                        <text x="910" y="355" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.7)">6# 主机</text>
+                        <circle cx="885" cy="335" r="3" fill="#4CAF50">
+                            <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                    </g>
+                </g>
+
+                <!-- 氮压机/氧压机（合并标注） -->
+                <g>
+                    <rect x="660" y="430" width="320" height="70" rx="10" fill="white" stroke="#636E72" stroke-width="1.5" stroke-dasharray="5,3" filter="url(#shadow3)"/>
+                    <text x="820" y="458" text-anchor="middle" font-size="12" font-weight="600" fill="#636E72">氮压机 / 氧压机 / 增压机 冷却器</text>
+                    <text x="820" y="480" text-anchor="middle" font-size="10" fill="#90A4AE">由空分主机供水总管覆盖 · 二级防护</text>
+                </g>
+
+                <text x="500" y="640" text-anchor="middle" font-size="11" fill="#78909C">↑ 各用户回水返回冷却塔（图中省略）</text>
+
+                <!-- 图例 -->
+                <g transform="translate(30, 50)">
+                    <rect x="0" y="0" width="160" height="130" rx="8" fill="white" stroke="#E0E0E0" stroke-width="1"/>
+                    <text x="80" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="#424242">设备图例</text>
+                    
+                    <rect x="15" y="35" width="30" height="18" rx="4" fill="#0A2463"/>
+                    <text x="55" y="48" font-size="10" fill="#424242">SMS-E-600 (DN600)</text>
+                    
+                    <rect x="15" y="60" width="30" height="18" rx="4" fill="#1E3F8A"/>
+                    <text x="55" y="73" font-size="10" fill="#424242">SMS-E-500 (DN450)</text>
+                    
+                    <rect x="15" y="85" width="30" height="18" rx="4" fill="#00B4D8"/>
+                    <text x="55" y="98" font-size="10" fill="#424242">SMS-E-200 (DN150)</text>
+                    
+                    <circle cx="25" cy="115" r="5" fill="#4CAF50">
+                        <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                    <text x="40" y="119" font-size="10" fill="#424242">运行状态指示</text>
+                </g>
+
+                <!-- 统计 -->
+                <g transform="translate(820, 50)">
+                    <rect x="0" y="0" width="150" height="100" rx="8" fill="white" stroke="#E0E0E0" stroke-width="1"/>
+                    <text x="75" y="22" text-anchor="middle" font-size="11" font-weight="700" fill="#424242">设备统计</text>
+                    <text x="15" y="45" font-size="10" fill="#616161">SMS-E-600：2 台</text>
+                    <text x="15" y="63" font-size="10" fill="#616161">SMS-E-500：2 台</text>
+                    <text x="15" y="81" font-size="10" fill="#616161">SMS-E-200：2 台</text>
+                    <text x="15" y="95" font-size="10" font-weight="700" fill="#0A2463">合计：6 台</text>
+                </g>
+            </svg>
+        </div>
+
+        <div class="device-config">
+            <div class="device-card">
+                <div class="device-card-header e600">
+                    <h3>SMS-E-600</h3>
+                    <span class="qty">× 2台</span>
+                </div>
+                <div class="device-card-body">
+                    <div class="location">
+                        📍 安装位置：汽轮机两条 DN600 循环水进水管道
+                    </div>
+                    <ul class="params">
+                        <li><span class="param-name">适用管径</span><span class="param-value">DN600</span></li>
+                        <li><span class="param-name">单管流量</span><span class="param-value">~1000 m³/h</span></li>
+                        <li><span class="param-name">防护对象</span><span class="param-value">凝汽器/表冷器</span></li>
+                        <li><span class="param-name">重要等级</span><span class="param-value" style="color: var(--danger-red);">★★★★★</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="device-card">
+                <div class="device-card-header e500">
+                    <h3>SMS-E-500</h3>
+                    <span class="qty">× 2台</span>
+                </div>
+                <div class="device-card-body">
+                    <div class="location">
+                        📍 安装位置：空分主机两条 DN450 循环水进水管道
+                    </div>
+                    <ul class="params">
+                        <li><span class="param-name">适用管径</span><span class="param-value">DN450</span></li>
+                        <li><span class="param-name">单管流量</span><span class="param-value">~1750 m³/h</span></li>
+                        <li><span class="param-name">防护对象</span><span class="param-value">空压机+空冷塔+氮氧压机</span></li>
+                        <li><span class="param-name">重要等级</span><span class="param-value" style="color: var(--warning-orange);">★★★★☆</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="device-card">
+                <div class="device-card-header e200">
+                    <h3>SMS-E-200</h3>
+                    <span class="qty">× 2台</span>
+                </div>
+                <div class="device-card-body">
+                    <div class="location">
+                        📍 安装位置：空分厂冰机 + 预冷系统冰机 DN150
+                    </div>
+                    <ul class="params">
+                        <li><span class="param-name">适用管径</span><span class="param-value">DN150</span></li>
+                        <li><span class="param-name">单台流量</span><span class="param-value">~200 m³/h</span></li>
+                        <li><span class="param-name">防护对象</span><span class="param-value">冷水机组冷凝器</span></li>
+                        <li><span class="param-name">重要等级</span><span class="param-value" style="color: var(--accent-blue);">★★★☆☆</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- 第四章：电磁阻垢设备配置 -->
+    <section class="content-section">
+        <div class="section-header">
+            <div class="section-number">04</div>
+            <h2 class="section-title">电磁阻垢设备配置</h2>
+            <p class="section-subtitle">Electromagnetic Scale Inhibitor</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <span class="icon">📋</span>
+                设备配置清单
+            </div>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>设备型号</th>
+                        <th>安装位置</th>
+                        <th>管径</th>
+                        <th>数量</th>
+                        <th>防护对象</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><strong>SMS-E-600</strong></td>
+                        <td>汽轮机1#循环水进水管</td>
+                        <td>DN600</td>
+                        <td>1台</td>
+                        <td>凝汽器</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><strong>SMS-E-600</strong></td>
+                        <td>汽轮机2#循环水进水管</td>
+                        <td>DN600</td>
+                        <td>1台</td>
+                        <td>凝汽器</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><strong>SMS-E-500</strong></td>
+                        <td>空分主机1#循环水进水管</td>
+                        <td>DN450</td>
+                        <td>1台</td>
+                        <td>空压机、空冷塔、氮压机</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><strong>SMS-E-500</strong></td>
+                        <td>空分主机2#循环水进水管</td>
+                        <td>DN450</td>
+                        <td>1台</td>
+                        <td>空压机、空冷塔、氧压机</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><strong>SMS-E-200</strong></td>
+                        <td>空分厂冰机循环水进水管</td>
+                        <td>DN150</td>
+                        <td>1台</td>
+                        <td>冷水机组冷凝器</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><strong>SMS-E-200</strong></td>
+                        <td>预冷系统冰机循环水进水管</td>
+                        <td>DN150</td>
+                        <td>1台</td>
+                        <td>冷水机组冷凝器</td>
+                    </tr>
+                    <tr style="background: var(--bg-gray); font-weight: 700;">
+                        <td colspan="4" style="text-align: right;">合计</td>
+                        <td>6台</td>
+                        <td>全系统覆盖</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <span class="icon">⚙️</span>
+                设备技术参数表
+            </div>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>参数项目</th>
+                        <th>SMS-E-200</th>
+                        <th>SMS-E-500</th>
+                        <th>SMS-E-600</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>适用管径</td>
+                        <td>DN100 ~ DN200</td>
+                        <td>DN400 ~ DN500</td>
+                        <td>DN500 ~ DN700</td>
+                    </tr>
+                    <tr>
+                        <td>额定功率</td>
+                        <td>800 W</td>
+                        <td>3000 W</td>
+                        <td>3500 W</td>
+                    </tr>
+                    <tr>
+                        <td>输入电压</td>
+                        <td>220 V</td>
+                        <td>220 V</td>
+                        <td>220 V</td>
+                    </tr>
+                    <tr>
+                        <td>输出电压</td>
+                        <td>48 V</td>
+                        <td>48 V</td>
+                        <td>48 V</td>
+                    </tr>
+                    <tr>
+                        <td>输出频率</td>
+                        <td>100 ~ 100 KHz</td>
+                        <td>100 ~ 100 KHz</td>
+                        <td>100 ~ 100 KHz</td>
+                    </tr>
+                    <tr>
+                        <td>外形尺寸 (宽×深×高)</td>
+                        <td>400 × 250 × 500 mm</td>
+                        <td>600 × 322 × 870 mm</td>
+                        <td>610 × 575 × 1523 mm</td>
+                    </tr>
+                    <tr>
+                        <td>防护等级</td>
+                        <td>IP54</td>
+                        <td>IP54</td>
+                        <td>IP54</td>
+                    </tr>
+                    <tr>
+                        <td>工作环境温度</td>
+                        <td>-20℃ ~ 50℃</td>
+                        <td>-20℃ ~ 50℃</td>
+                        <td>-20℃ ~ 50℃</td>
+                    </tr>
+                    <tr>
+                        <td>交互方式</td>
+                        <td>大屏触控本地操作</td>
+                        <td>大屏触控本地操作</td>
+                        <td>大屏触控本地操作</td>
+                    </tr>
+                    <tr>
+                        <td>安装方式</td>
+                        <td colspan="3" style="text-align: center;">管道外部缠绕线圈，主机壁挂/落地安装</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <img src="https://aka.doubaocdn.com/s/horVxgjflQ" alt="SMS系列设备外观图" style="max-width: 100%; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
+            <p style="margin-top: 15px; font-size: 0.95rem; color: var(--light-gray);">SMS系列分布式电磁阻垢设备外观（从左至右：小型/中型/大型）</p>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- 第五章：安装示意图 -->
+    <section class="content-section">
+        <div class="section-header">
+            <div class="section-number">05</div>
+            <h2 class="section-title">安装示意图</h2>
+            <p class="section-subtitle">Installation Diagram</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <span class="icon">🔩</span>
+                典型安装方式说明
+            </div>
+            <p style="margin-bottom: 15px;">
+                SMS分布式电磁阻垢设备采用<strong>管道外部安装</strong>方式，无需切割管道、无需停机，线圈直接缠绕在管道外壁，主机就近安装在管道旁边的墙壁或支架上。
+            </p>
+            <p>
+                电磁线圈通过专用线缆与主机连接，主机接通电源后即可产生高频交变电磁场，通过管壁传导至内部水体，对水中的钙镁离子和碳酸钙晶体产生作用。
+            </p>
+        </div>
+
+        <div class="install-diagram">
+            <h3 style="text-align: center; color: var(--primary-blue); margin-bottom: 20px;">章丘中泰深冷项目现场安装示意图</h3>
+            <img src="https://aka.doubaocdn.com/s/kCPalNHbF2" alt="章丘中泰深冷安装示意图">
+            <p class="caption">现场管道线圈缠绕 + 控制主机安装示意图</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <span class="icon">📐</span>
+                各型号安装尺寸参考
+            </div>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>设备型号</th>
+                        <th>适用管径</th>
+                        <th>线圈长度</th>
+                        <th>主机尺寸 (宽×深×高)</th>
+                        <th>安装方式</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>SMS-E-200</strong></td>
+                        <td>DN150</td>
+                        <td>约 1.5~2 m</td>
+                        <td>400 × 250 × 500 mm</td>
+                        <td>壁挂安装</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SMS-E-500</strong></td>
+                        <td>DN450</td>
+                        <td>约 3~4 m</td>
+                        <td>600 × 322 × 870 mm</td>
+                        <td>壁挂/落地</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SMS-E-600</strong></td>
+                        <td>DN600</td>
+                        <td>约 3~5 m</td>
+                        <td>610 × 575 × 1523 mm</td>
+                        <td>落地安装</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- 第五章：电化学除垢设备配置 -->
+    <section class="content-section">
+        <div class="section-header">
+            <div class="section-number">05</div>
+            <h2 class="section-title">电化学除垢设备配置</h2>
+            <p class="section-subtitle">Electrochemical Descaling Equipment</p>
+        </div>
+
+        <p class="section-desc" style="text-align: center; max-width: 900px; margin: 0 auto 30px;">
+            针对现场循环水排污管控期间结垢风险加剧的问题，配置全自动电化学除垢设备作为安全生产保障措施。
+            通过电解作用将水中钙镁离子以固体水垢形式析出排出，在无法正常排污的情况下，
+            有效降低钙镁离子浓缩速度，延缓结垢周期，避免结垢加剧导致的设备故障和停机风险。
+        </p>
+
+        <!-- 设备概述 -->
+        <div class="electrochem-section">
+            <h3 style="font-size: 1.2rem; color: var(--primary-blue); margin-bottom: 20px; text-align: center;">
+                SMS-D-5000 全自动电化学水处理设备
+            </h3>
+
+            <div class="electrochem-principle">
+                <div class="electrochem-card">
+                    <h4>电吸附除垢原理</h4>
+                    <p>
+                        电解过程中，阴极区域形成强碱环境（pH>14），
+                        氢氧根离子和碳酸根离子富集，钙、镁离子生成碳酸钙、
+                        氢氧化镁等水垢沉淀物，吸附在阴极板上，定期自动刮垢排出系统，
+                        从源头降低循环水硬度。
+                    </p>
+                </div>
+                <div class="electrochem-card">
+                    <h4>电解杀菌灭藻</h4>
+                    <p>
+                        阳极表面产生羟基自由基（·OH）、臭氧、次氯酸、
+                        过氧化氢等强氧化剂，氧化还原电动势达+2.8V，
+                        可无选择降解有机物，高效杀菌灭藻、剥离生物黏泥，
+                        同时去除部分氯离子，降低腐蚀风险。
+                    </p>
+                </div>
+                <div class="electrochem-card">
+                    <h4>极性分子阻垢</h4>
+                    <p>
+                        强电场力下，水中缔合水分子被撕裂成单个阻垢水分子，
+                        按极性吸附在正负离子周围形成水合络合离子，
+                        随水流定向移动，阻止成垢离子结合形成水垢，
+                        实现全系统阻垢效果。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 四大优势 -->
+        <div class="electrochem-section">
+            <h3 style="font-size: 1.2rem; color: var(--primary-blue); margin-bottom: 20px; text-align: center;">
+                技术优势
+            </h3>
+            <div class="electrochem-advantages">
+                <div class="electrochem-advantage-item">
+                    <div class="electrochem-advantage-icon">除</div>
+                    <h4>源头除垢</h4>
+                    <p>电吸附去除钙镁离子，从源头降低硬度</p>
+                </div>
+                <div class="electrochem-advantage-item">
+                    <div class="electrochem-advantage-icon">全</div>
+                    <h4>全自动运行</h4>
+                    <p>PLC自动控制，定期刮垢，无人值守</p>
+                </div>
+                <div class="electrochem-advantage-item">
+                    <div class="electrochem-advantage-icon">环</div>
+                    <h4>环保无污染</h4>
+                    <p>无需化学药剂，零污染排放</p>
+                </div>
+                <div class="electrochem-advantage-item">
+                    <div class="electrochem-advantage-icon">节</div>
+                    <h4>节水减排</h4>
+                    <p>降低钙镁离子浓缩速度，延缓结垢周期</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 设备参数 -->
+        <div class="electrochem-section">
+            <h3 style="font-size: 1.2rem; color: var(--primary-blue); margin-bottom: 20px; text-align: center;">
+                设备技术参数
+            </h3>
+
+            <table class="electrochem-params-table">
+                <thead>
+                    <tr>
+                        <th style="width: 30%;">参数项目</th>
+                        <th style="width: 70%;">SMS-D-5000</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>设备名称</strong></td>
+                        <td>全自动电化学水处理设备（全自动无人值守）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>对应循环水量</strong></td>
+                        <td>5000 m³/h</td>
+                    </tr>
+                    <tr>
+                        <td><strong>设备功能</strong></td>
+                        <td>除垢、阻垢、杀菌、灭藻、降浊度、净化水质</td>
+                    </tr>
+                    <tr>
+                        <td><strong>设计使用寿命</strong></td>
+                        <td>20年</td>
+                    </tr>
+                    <tr>
+                        <td><strong>设备工作压力</strong></td>
+                        <td>常压</td>
+                    </tr>
+                    <tr>
+                        <td><strong>额定功率</strong></td>
+                        <td>30 kW</td>
+                    </tr>
+                    <tr>
+                        <td><strong>运行功率</strong></td>
+                        <td>10~15 kW（自动调节）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>输入电压</strong></td>
+                        <td>三相五线 380V / 50Hz</td>
+                    </tr>
+                    <tr>
+                        <td><strong>输出电压</strong></td>
+                        <td>24V 安全电压</td>
+                    </tr>
+                    <tr>
+                        <td><strong>清垢方式</strong></td>
+                        <td>全自动液压刮垢，1天/次（可调整）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>设备材质</strong></td>
+                        <td>箱体内外喷塑+PP内衬，阴极热镀锌，阳极稀有贵金属</td>
+                    </tr>
+                    <tr>
+                        <td><strong>阳极材质</strong></td>
+                        <td>铱、钌、钽、钛等贵金属氧化物（专利配方）</td>
+                    </tr>
+                    <tr>
+                        <td><strong>阳极板数量</strong></td>
+                        <td>15片</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PLC柜尺寸</strong></td>
+                        <td>300 × 600 × 1500 mm</td>
+                    </tr>
+                    <tr>
+                        <td><strong>阳极使用寿命</strong></td>
+                        <td>≥5年</td>
+                    </tr>
+                    <tr>
+                        <td><strong>通讯方式</strong></td>
+                        <td>RS485接口，Modbus协议，支持DCS对接</td>
+                    </tr>
+                    <tr>
+                        <td><strong>控制方式</strong></td>
+                        <td>PLC全自动控制，触摸屏操作，远程监控</td>
+                    </tr>
+                    <tr>
+                        <td><strong>处理器尺寸</strong></td>
+                        <td>2670 × 1630 × 2300 mm</td>
+                    </tr>
+                    <tr>
+                        <td><strong>交货周期</strong></td>
+                        <td>35个工作日</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 工艺流程 -->
+        <div class="electrochem-section">
+            <div class="electrochem-flow">
+                <h4>工艺流程</h4>
+                <div class="flow-steps">
+                    <div class="flow-step">
+                        <div class="flow-step-icon">1</div>
+                        <p>循环水回水</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        <div class="flow-step-icon">2</div>
+                        <p>电解处理</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        <div class="flow-step-icon">3</div>
+                        <p>阴极吸垢</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        <div class="flow-step-icon">4</div>
+                        <p>阳极杀菌</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        <div class="flow-step-icon">5</div>
+                        <p>自动刮垢</p>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        <div class="flow-step-icon">6</div>
+                        <p>净水回流</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 设备示意图 -->
+        <div class="electrochem-section">
+            <h3 style="font-size: 1.2rem; color: var(--primary-blue); margin-bottom: 20px; text-align: center;">
+                设备结构示意图
+            </h3>
+            <div style="background: white; border-radius: 16px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); text-align: center;">
+                <svg viewBox="0 0 800 450" style="max-width: 100%; height: auto;">
+                    <!-- 背景 -->
+                    <rect x="0" y="0" width="800" height="450" fill="#f8f9fa" rx="10"/>
+                    
+                    <!-- 处理器主体 -->
+                    <rect x="200" y="80" width="400" height="280" rx="10" fill="#e8f4fd" stroke="#3E92CC" stroke-width="3"/>
+                    <text x="400" y="110" text-anchor="middle" font-size="16" font-weight="bold" fill="#0A2463">电化学处理器</text>
+                    <text x="400" y="130" text-anchor="middle" font-size="12" fill="#666">2670 × 1630 × 2300 mm</text>
+                    
+                    <!-- 阳极板 -->
+                    <g id="anodes">
+                        <rect x="240" y="150" width="20" height="180" rx="3" fill="#f39c12" opacity="0.8"/>
+                        <rect x="290" y="150" width="20" height="180" rx="3" fill="#f39c12" opacity="0.8"/>
+                        <rect x="340" y="150" width="20" height="180" rx="3" fill="#f39c12" opacity="0.8"/>
+                        <rect x="390" y="150" width="20" height="180" rx="3" fill="#f39c12" opacity="0.8"/>
+                        <rect x="440" y="150" width="20" height="180" rx="3" fill="#f39c12" opacity="0.8"/>
+                        <rect x="490" y="150" width="20" height="180" rx="3" fill="#f39c12" opacity="0.8"/>
+                        <rect x="540" y="150" width="20" height="180" rx="3" fill="#f39c12" opacity="0.8"/>
+                    </g>
+                    <text x="400" y="355" text-anchor="middle" font-size="11" fill="#f39c12" font-weight="bold">阳极板 × 15片（贵金属氧化物）</text>
+                    
+                    <!-- 阴极板 -->
+                    <g id="cathodes">
+                        <rect x="265" y="150" width="15" height="180" rx="2" fill="#3498db" opacity="0.6"/>
+                        <rect x="315" y="150" width="15" height="180" rx="2" fill="#3498db" opacity="0.6"/>
+                        <rect x="365" y="150" width="15" height="180" rx="2" fill="#3498db" opacity="0.6"/>
+                        <rect x="415" y="150" width="15" height="180" rx="2" fill="#3498db" opacity="0.6"/>
+                        <rect x="465" y="150" width="15" height="180" rx="2" fill="#3498db" opacity="0.6"/>
+                        <rect x="515" y="150" width="15" height="180" rx="2" fill="#3498db" opacity="0.6"/>
+                        <rect x="565" y="150" width="15" height="180" rx="2" fill="#3498db" opacity="0.6"/>
+                    </g>
+                    
+                    <!-- 进水口 -->
+                    <rect x="120" y="200" width="80" height="40" rx="5" fill="#00B4D8"/>
+                    <text x="160" y="225" text-anchor="middle" font-size="11" fill="white" font-weight="bold">进水</text>
+                    <text x="160" y="260" text-anchor="middle" font-size="10" fill="#666">DN150 × 2</text>
+                    <path d="M 200 220 L 230 220" stroke="#00B4D8" stroke-width="3" marker-end="url(#arrowhead)"/>
+                    
+                    <!-- 出水口 -->
+                    <rect x="600" y="180" width="80" height="40" rx="5" fill="#00B894"/>
+                    <text x="640" y="205" text-anchor="middle" font-size="11" fill="white" font-weight="bold">出水</text>
+                    <text x="640" y="240" text-anchor="middle" font-size="10" fill="#666">DN300</text>
+                    <path d="M 570 200 L 600 200" stroke="#00B894" stroke-width="3" marker-end="url(#arrowhead)"/>
+                    
+                    <!-- 排垢口 -->
+                    <rect x="340" y="360" width="120" height="35" rx="5" fill="#E74C3C"/>
+                    <text x="400" y="383" text-anchor="middle" font-size="11" fill="white" font-weight="bold">自动排垢</text>
+                    <text x="400" y="410" text-anchor="middle" font-size="10" fill="#666">DN200</text>
+                    <path d="M 400 360 L 400 360" stroke="#E74C3C" stroke-width="3"/>
+                    
+                    <!-- PLC控制柜 -->
+                    <rect x="650" y="80" width="100" height="150" rx="5" fill="#2c3e50"/>
+                    <rect x="665" y="100" width="70" height="40" rx="3" fill="#3498db" opacity="0.8"/>
+                    <text x="700" y="125" text-anchor="middle" font-size="10" fill="white">触摸屏</text>
+                    <rect x="665" y="150" width="70" height="60" rx="3" fill="#1a252f"/>
+                    <circle cx="680" cy="170" r="5" fill="#00B894"/>
+                    <circle cx="700" cy="170" r="5" fill="#f39c12"/>
+                    <circle cx="720" cy="170" r="5" fill="#E74C3C"/>
+                    <text x="700" y="200" text-anchor="middle" font-size="9" fill="#95a5a6">PLC</text>
+                    <text x="700" y="245" text-anchor="middle" font-size="11" fill="#2c3e50" font-weight="bold">PLC控制柜</text>
+                    <text x="700" y="262" text-anchor="middle" font-size="10" fill="#666">300×600×1500</text>
+                    
+                    <!-- 连接线 -->
+                    <path d="M 600 150 L 650 150" stroke="#2c3e50" stroke-width="2" stroke-dasharray="5,3"/>
+                    
+                    <!-- 电源标注 -->
+                    <text x="700" y="290" text-anchor="middle" font-size="10" fill="#666">输入：380V</text>
+                    <text x="700" y="305" text-anchor="middle" font-size="10" fill="#666">输出：24V</text>
+                    <text x="700" y="320" text-anchor="middle" font-size="10" fill="#666">功率：30kW</text>
+                    
+                    <!-- 液压刮垢 -->
+                    <rect x="250" y="50" width="300" height="25" rx="5" fill="#9b59b6" opacity="0.8"/>
+                    <text x="400" y="68" text-anchor="middle" font-size="11" fill="white" font-weight="bold">液压自动刮垢系统</text>
+                    
+                    <!-- 箭头定义 -->
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+                        </marker>
+                    </defs>
+                    
+                    <!-- 水流方向标注 -->
+                    <text x="400" y="440" text-anchor="middle" font-size="11" fill="#999">水流方向：进水 → 电解处理 → 阴极吸垢 → 阳极杀菌 → 净水回流</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- 供货范围 -->
+        <div class="electrochem-section">
+            <h3 style="font-size: 1.2rem; color: var(--primary-blue); margin-bottom: 20px; text-align: center;">
+                供货范围（不含安装及土建）
+            </h3>
+
+            <table class="electrochem-params-table">
+                <thead>
+                    <tr>
+                        <th style="width: 10%;">序号</th>
+                        <th style="width: 30%;">设备名称</th>
+                        <th style="width: 40%;">规格说明</th>
+                        <th style="width: 10%;">数量</th>
+                        <th style="width: 10%;">单位</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>全自动电化学处理器</td>
+                        <td>SMS-D-5000（含去氯离子气浮装置）</td>
+                        <td>1</td>
+                        <td>套</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>电源柜（含电解电源）</td>
+                        <td>组合式高频直流电源</td>
+                        <td>1</td>
+                        <td>套</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>PLC控制柜</td>
+                        <td>西门子PLC，10寸真彩触摸屏，含程序</td>
+                        <td>1</td>
+                        <td>台</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>电磁流量计</td>
+                        <td>循环水专用，带485通讯</td>
+                        <td>1</td>
+                        <td>个</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>电动阀组</td>
+                        <td>进水/出水/排污/反洗电动阀</td>
+                        <td>1</td>
+                        <td>套</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>液压刮垢系统</td>
+                        <td>全自动液压刮垢装置</td>
+                        <td>1</td>
+                        <td>套</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>pH在线监测仪</td>
+                        <td>在线pH计，带485通讯</td>
+                        <td>1</td>
+                        <td>台</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>技术资料</td>
+                        <td>说明书、合格证、图纸（电子版+纸质版）</td>
+                        <td>1</td>
+                        <td>套</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div style="background: #fff8e6; border-left: 4px solid #f39c12; padding: 15px 20px; border-radius: 8px; margin-top: 20px;">
+                <p style="font-size: 0.9rem; color: #666; margin: 0; line-height: 1.8;">
+                    <strong>说明：</strong>以上供货范围不含现场安装、土建施工、彩钢房建设、主供电电缆及循环水主管道开孔等内容。
+                    设备开机调试及操作培训由我方负责。
+                </p>
+            </div>
+        </div>
+
+
+        <!-- 安装条件要求 -->
+        <div class="electrochem-section">
+            <h3 style="font-size: 1.2rem; color: var(--primary-blue); margin-bottom: 20px; text-align: center;">
+                安装条件要求
+            </h3>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin: 20px 0;">
+                <div style="background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid var(--accent-blue);">
+                    <h4 style="font-size: 1rem; color: var(--primary-blue); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                        <span style="width: 28px; height: 28px; background: var(--accent-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.85rem; font-weight: bold;">1</span>
+                        土建条件
+                    </h4>
+                    <ul style="padding-left: 20px; margin: 0; font-size: 0.85rem; color: var(--light-gray); line-height: 2;">
+                        <li>需建设设备基础平台，承重≥5吨</li>
+                        <li>需配套建设水垢收集池/沉降池</li>
+                        <li>设备占地约15㎡（含维保空间）</li>
+                        <li>建议建设防雨棚或彩钢房</li>
+                        <li>场地需满足设备吊装运输要求</li>
+                    </ul>
+                </div>
+
+                <div style="background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid var(--success-green);">
+                    <h4 style="font-size: 1rem; color: var(--primary-blue); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                        <span style="width: 28px; height: 28px; background: var(--success-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.85rem; font-weight: bold;">2</span>
+                        管道条件
+                    </h4>
+                    <ul style="padding-left: 20px; margin: 0; font-size: 0.85rem; color: var(--light-gray); line-height: 2;">
+                        <li>循环水回水管开孔，焊接旁路管道</li>
+                        <li>进水管道：DN150（双路进水）</li>
+                        <li>出水管道：DN300</li>
+                        <li>排垢管道：DN200</li>
+                        <li>利用回水压力供水，无需额外水泵</li>
+                    </ul>
+                </div>
+
+                <div style="background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid #f39c12;">
+                    <h4 style="font-size: 1rem; color: var(--primary-blue); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                        <span style="width: 28px; height: 28px; background: #f39c12; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.85rem; font-weight: bold;">3</span>
+                        电气条件
+                    </h4>
+                    <ul style="padding-left: 20px; margin: 0; font-size: 0.85rem; color: var(--light-gray); line-height: 2;">
+                        <li>主供电：三相五线 380V / 50Hz</li>
+                        <li>额定功率：30kW</li>
+                        <li>运行功率：10~15kW（自动调节）</li>
+                        <li>需配套配电柜至设备现场</li>
+                        <li>建议预留备用电源接口</li>
+                    </ul>
+                </div>
+
+                <div style="background: white; border-radius: 12px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid var(--danger-red);">
+                    <h4 style="font-size: 1rem; color: var(--primary-blue); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                        <span style="width: 28px; height: 28px; background: var(--danger-red); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.85rem; font-weight: bold;">4</span>
+                        施工说明
+                    </h4>
+                    <ul style="padding-left: 20px; margin: 0; font-size: 0.85rem; color: var(--light-gray); line-height: 2;">
+                        <li>不含现场安装及土建施工</li>
+                        <li>不含主供电电缆敷设</li>
+                        <li>不含循环水主管道开孔焊接</li>
+                        <li>设备开机调试由我方负责</li>
+                        <li>提供操作培训和技术指导</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 与化学药剂对比 -->
+        <div class="electrochem-section">
+            <h3 style="font-size: 1.2rem; color: var(--primary-blue); margin-bottom: 20px; text-align: center;">
+                电化学法 vs 化学药剂法
+            </h3>
+
+            <div class="electrochem-comparison">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">对比项</th>
+                            <th style="width: 40%;">化学药剂法</th>
+                            <th style="width: 40%;">电化学设备物理法</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="label">处理方法</td>
+                            <td>依靠化学药剂达到阻垢、杀菌、防腐效果</td>
+                            <td class="good">依靠电化学技术实现除垢、阻垢、杀菌灭藻</td>
+                        </tr>
+                        <tr>
+                            <td class="label">处理效果</td>
+                            <td class="bad">不稳定，受天气、人为因素影响大</td>
+                            <td class="good">稳定，全程自动控制，实时调整运行参数</td>
+                        </tr>
+                        <tr>
+                            <td class="label">节能减排</td>
+                            <td class="bad">补排水量大，浓缩倍数一般4倍以下</td>
+                            <td class="good">降低钙镁离子浓缩速度，延缓结垢周期</td>
+                        </tr>
+                        <tr>
+                            <td class="label">对系统危害</td>
+                            <td class="bad">药剂投加量难控制，对系统危害较大</td>
+                            <td class="good">选型准确可确保安全平稳运行，无污染</td>
+                        </tr>
+                        <tr>
+                            <td class="label">环保性</td>
+                            <td class="bad">外排污量大，污染物多，对环境污染大</td>
+                            <td class="good">外排水量少，污染物单一，浓度低易降解</td>
+                        </tr>
+                        <tr>
+                            <td class="label">费用投入</td>
+                            <td>单次费用低，需长期投入</td>
+                            <td>单次费用高，后续费用极低</td>
+                        </tr>
+                        <tr>
+                            <td class="label">日常消耗</td>
+                            <td class="bad">各种药剂费，持续投入</td>
+                            <td class="good">电费、阳极更换费（5年一换）</td>
+                        </tr>
+                        <tr>
+                            <td class="label">系统维护费</td>
+                            <td class="bad">相对较高</td>
+                            <td class="good">可节约80%以上的维保费</td>
+                        </tr>
+                        <tr>
+                            <td class="label">结垢能耗</td>
+                            <td class="bad">1mm厚垢约增加8%能源损失</td>
+                            <td class="good">可降低能耗30-60%以上</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- 第六章：效果验证方案 -->
+    <section class="content-section">
+        <div class="section-header">
+            <div class="section-number">06</div>
+            <h2 class="section-title">效果验证方案</h2>
+            <p class="section-subtitle">Effect Verification Plan</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <span class="icon">🎯</span>
+                验证目标
+            </div>
+            <p style="margin-bottom: 15px;">
+                通过科学、可量化的方法验证SMS分布式电磁阻垢系统的实际运行效果，确保达到预期的阻垢目标。
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 20px;">
+                <div style="background: linear-gradient(135deg, #E8F5E9, #C8E6C9); padding: 20px; border-radius: 12px; text-align: center;">
+                    <div style="font-size: 2rem; font-weight: 900; color: #2E7D32;">↓ 30%+</div>
+                    <div style="font-size: 0.9rem; color: #388E3C; margin-top: 5px;">结垢速率降低</div>
+                </div>
+                <div style="background: linear-gradient(135deg, #FFF3E0, #FFE0B2); padding: 20px; border-radius: 12px; text-align: center;">
+                    <div style="font-size: 2rem; font-weight: 900; color: #E65100;">延长一倍</div>
+                    <div style="font-size: 0.9rem; color: #F57C00; margin-top: 5px;">清洗周期延长</div>
+                </div>
+                <div style="background: linear-gradient(135deg, #E3F2FD, #BBDEFB); padding: 20px; border-radius: 12px; text-align: center;">
+                    <div style="font-size: 2rem; font-weight: 900; color: #1565C0;">↓ 5~10%</div>
+                    <div style="font-size: 0.9rem; color: #1976D2; margin-top: 5px;">换热效率提升</div>
+                </div>
+                <div style="background: linear-gradient(135deg, #F3E5F5, #E1BEE7); padding: 20px; border-radius: 12px; text-align: center;">
+                    <div style="font-size: 2rem; font-weight: 900; color: #7B1FA2;">✅ 持续</div>
+                    <div style="font-size: 0.9rem; color: #9C27B0; margin-top: 5px;">在线阻垢运行</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="verify-steps">
+            <div class="verify-step">
+                <div class="step-number">1</div>
+                <h4>基线数据采集法</h4>
+                <p>设备安装前，连续7~15天采集各关键参数作为基准值：<br>
+                • 各冷却器进出口温度差<br>
+                • 汽轮机凝汽器真空度<br>
+                • 循环水电导率、硬度、pH值<br>
+                • 空压机排气温度<br>
+                • 循环水泵运行电流</p>
+            </div>
+            <div class="verify-step">
+                <div class="step-number">2</div>
+                <h4>温度差监测法</h4>
+                <p>定期监测各主要冷却器的进出口温差变化：<br>
+                • 温差增大 → 换热效率提升 → 阻垢有效<br>
+                • 重点监测：汽轮机凝汽器、空压机末冷、空冷塔出口<br>
+                • 对比同期历史数据，排除负荷波动影响</p>
+            </div>
+            <div class="verify-step">
+                <div class="step-number">3</div>
+                <h4>真空度监测法</h4>
+                <p>汽轮机凝汽器真空度是最直观的指标：<br>
+                • 真空度提高 → 换热改善 → 结垢减少<br>
+                • 真空每提高1kPa，汽耗降低1.5~2%<br>
+                • 需排除蒸汽负荷、环境温度等因素干扰</p>
+            </div>
+            <div class="verify-step">
+                <div class="step-number">4</div>
+                <h4>水质跟踪法</h4>
+                <p>定期检测循环水水质变化趋势：<br>
+                • 总硬度、钙硬度、碱度变化趋势<br>
+                • 浊度、悬浮物含量变化<br>
+                • 电导率与浓缩倍数关系<br>
+                • 持续跟踪水质稳定性变化</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <span class="icon">📊</span>
+                验证周期与报告
+            </div>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>阶段</th>
+                        <th>时间节点</th>
+                        <th>验证内容</th>
+                        <th>输出</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>基线期</td>
+                        <td>安装前 1~2周</td>
+                        <td>采集各项基准数据</td>
+                        <td>基线数据报告</td>
+                    </tr>
+                    <tr>
+                        <td>初期验证</td>
+                        <td>运行 1个月</td>
+                        <td>温度、真空度初步观察</td>
+                        <td>月度运行简报</td>
+                    </tr>
+                    <tr>
+                        <td>中期验证</td>
+                        <td>运行 3个月</td>
+                        <td>趋势分析、水质跟踪</td>
+                        <td>季度效果评估报告</td>
+                    </tr>
+                    <tr>
+                        <td>全面验证</td>
+                        <td>运行 6个月</td>
+                        <td>全面指标对比、换热效率分析</td>
+                        <td>半年度效果验证报告</td>
+                    </tr>
+                    <tr>
+                        <td>年度总结</td>
+                        <td>运行 12个月</td>
+                        <td>年度效益核算、经济性分析</td>
+                        <td>年度运行总结报告</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- 第七章：实施单位介绍 -->
+    <section class="content-section">
+        <div class="section-header">
+            <div class="section-number">07</div>
+            <h2 class="section-title">实施单位介绍</h2>
+            <p class="section-subtitle">About Weima New Energy</p>
+        </div>
+
+        <div class="company-intro">
+            <div class="card">
+                <div class="card-title">
+                    <span class="icon">🏢</span>
+                    公司简介
+                </div>
+                <p style="margin-bottom: 15px;">
+                    <strong>威马（青岛）新能源科技有限公司</strong>成立于2019年，位于济南市莱芜高新区苍龙泉大街008号，是一家集电磁节能设备和电磁水处理设备设计、研发、制造于一体的高科技生产型企业。
+                </p>
+                <p style="margin-bottom: 15px;">
+                    公司隶属于<strong>山东威马集团</strong>，依托集团在工业装备领域的深厚积累，专注于电磁物理水处理技术的研发和应用。
+                </p>
+                <p>
+                    根据市场需求，公司从设计研发到生产制造，已完成<strong>7次产品迭代</strong>，现具备多种选配方案适应不同工况。已与大型食品加工企业、化工厂、设计院、冶金厂、集中供热公司进行合作，并已得到客户认可。
+                </p>
+            </div>
+
+            <div>
+                <div class="card">
+                    <div class="card-title">
+                        <span class="icon">💎</span>
+                        企业理念
+                    </div>
+                    <div class="company-values">
+                        <div class="value-item">
+                            <div class="value-title">人才理念</div>
+                            <div class="value-desc">工匠精神，德为才先</div>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-title">生产理念</div>
+                            <div class="value-desc">质量第一，精耕细作</div>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-title">产品理念</div>
+                            <div class="value-desc">为客户创造价值</div>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-title">管理理念</div>
+                            <div class="value-desc">服从组织，团队作战</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">
+                        <span class="icon">🏭</span>
+                        集团背景
+                    </div>
+                    <p style="font-size: 0.95rem; color: var(--light-gray); line-height: 1.8;">
+                        山东威马泵业股份有限公司（威马股份）成立于1996年，是油气举升装备领域的专业服务商，产品广泛应用于石油天然气开采领域，已通过ISO9001国际质量管理体系认证及美国石油学会API认证。公司于2014年挂牌上市（股票代码：430732）。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- 第八章：资质文件 -->
+    <section class="content-section">
+        <div class="section-header">
+            <div class="section-number">08</div>
+            <h2 class="section-title">资质文件</h2>
+            <p class="section-subtitle">Qualifications & Certifications</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <span class="icon">📜</span>
+                专利与体系认证
+            </div>
+            <p style="margin-bottom: 20px; color: var(--light-gray); font-size: 0.9rem;">
+                公司拥有多项实用新型专利，并通过了ISO9001质量管理体系、ISO14001环境管理体系、ISO45001职业健康安全管理体系认证。
+            </p>
+            <div class="cert-showcase">
+                <img src="https://aka.doubaocdn.com/s/IHk4uWVBpM" alt="资质证书">
+                <p style="margin-top: 15px; font-size: 0.95rem; color: var(--light-gray);">
+                    实用新型专利证书 × 3项 &nbsp;|&nbsp; ISO三体系认证 × 3项
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <span class="icon">🏆</span>
+                技术优势
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <div style="padding: 20px; background: var(--bg-gray); border-radius: 12px;">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 10px; font-size: 1rem;">🔬 7次产品迭代</h4>
+                    <p style="font-size: 0.9rem; color: var(--light-gray);">从设计研发到生产制造，持续优化升级，技术成熟可靠</p>
+                </div>
+                <div style="padding: 20px; background: var(--bg-gray); border-radius: 12px;">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 10px; font-size: 1rem;">🏭 自主生产</h4>
+                    <p style="font-size: 0.9rem; color: var(--light-gray);">拥有完整的研发、生产、质检体系，产品质量可控</p>
+                </div>
+                <div style="padding: 20px; background: var(--bg-gray); border-radius: 12px;">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 10px; font-size: 1rem;">🤝 多行业验证</h4>
+                    <p style="font-size: 0.9rem; color: var(--light-gray);">食品、化工、冶金、供热等多行业应用，客户认可</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- 第九章：成功案例 -->
+    <section class="content-section">
+        <div class="section-header">
+            <div class="section-number">09</div>
+            <h2 class="section-title">成功案例</h2>
+            <p class="section-subtitle">Success Cases</p>
+        </div>
+
+        <div class="case-pages">
+            <div class="case-page">
+                <div class="case-page-number">01</div>
+                <div class="case-page-label">成功案例</div>
+                <div class="case-page-image">
+                    <img src="https://aka.doubaocdn.com/s/e522cAimN5" alt="案例一">
+                </div>
+                <div class="case-page-info">
+                    <div class="case-page-title">案例一</div>
+                    <div class="case-page-divider"></div>
+                    <div class="case-page-desc">
+                        工业循环水系统电磁阻垢项目，设备稳定运行，有效抑制管道结垢，换热效率显著提升，延长设备清洗周期。
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-page">
+                <div class="case-page-number">02</div>
+                <div class="case-page-label">成功案例</div>
+                <div class="case-page-image">
+                    <img src="https://aka.doubaocdn.com/s/UERjWmVbdZ" alt="案例二">
+                </div>
+                <div class="case-page-info">
+                    <div class="case-page-title">案例二</div>
+                    <div class="case-page-divider"></div>
+                    <div class="case-page-desc">
+                        化工企业循环冷却水系统改造，采用分布式电磁阻垢技术，替代传统化学药剂方案，运行成本大幅降低。
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-page">
+                <div class="case-page-number">03</div>
+                <div class="case-page-label">成功案例</div>
+                <div class="case-page-image">
+                    <img src="https://aka.doubaocdn.com/s/dR1VAeiZJu" alt="案例三">
+                </div>
+                <div class="case-page-info">
+                    <div class="case-page-title">案例三</div>
+                    <div class="case-page-divider"></div>
+                    <div class="case-page-desc">
+                        大型换热站循环水治理，多台设备并联运行，全系统覆盖，结垢速率明显下降，维护周期延长一倍以上。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p style="text-align: center; color: var(--light-gray); font-size: 0.9rem; margin-top: 20px;">
+            * 以上为部分案例展示，更多案例资料可现场提供
+        </p>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- 第十章：价格方案 -->
+    <section class="content-section">
+        <div class="section-header">
+            <div class="section-number">10</div>
+            <h2 class="section-title">价格方案</h2>
+            <p class="section-subtitle">Pricing</p>
+        </div>
+
+        <p class="section-desc" style="text-align: center; max-width: 800px; margin: 0 auto 30px;">
+            针对不同管径和应用场景，我们提供三种标准型号的电磁阻垢设备，满足各类工业循环水系统的阻垢需求。
+        </p>
+
+        <div class="pricing-section">
+            <div class="pricing-grid">
+                <!-- 小型机 -->
+                <div class="pricing-card">
+                    <div class="pricing-model">小型机</div>
+                    <div class="pricing-name">SMS-E-200</div>
+                    <div class="pricing-price">
+                        <span class="currency">¥</span>
+                        <span class="amount">8.9</span>
+                        <div class="unit">万元 / 台</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>适用管径 DN100~DN200</li>
+                        <li>额定功率 800W</li>
+                        <li>输出电压 48V 安全电压</li>
+                        <li>IP54 防护等级</li>
+                        <li>大屏触控本地操作</li>
+                        <li>线圈长度约 1.5~2 米</li>
+                        <li>壁挂/落地安装</li>
+                    </ul>
+                </div>
+
+                <!-- 中型机 -->
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">热销</div>
+                    <div class="pricing-model">中型机</div>
+                    <div class="pricing-name">SMS-E-500</div>
+                    <div class="pricing-price">
+                        <span class="currency">¥</span>
+                        <span class="amount">39.8</span>
+                        <div class="unit">万元 / 台</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>适用管径 DN400~DN500</li>
+                        <li>额定功率 3000W</li>
+                        <li>输出电压 48V 安全电压</li>
+                        <li>IP54 防护等级</li>
+                        <li>大屏触控本地操作</li>
+                        <li>线圈长度约 3~4 米</li>
+                        <li>壁挂/落地安装</li>
+                        <li>分布式多线圈设计</li>
+                    </ul>
+                </div>
+
+                <!-- 大型机 -->
+                <div class="pricing-card">
+                    <div class="pricing-model">大型机</div>
+                    <div class="pricing-name">SMS-E-600</div>
+                    <div class="pricing-price">
+                        <span class="currency">¥</span>
+                        <span class="amount">45.8</span>
+                        <div class="unit">万元 / 台</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>适用管径 DN500~DN700</li>
+                        <li>额定功率 3500W</li>
+                        <li>输出电压 48V 安全电压</li>
+                        <li>IP54 防护等级</li>
+                        <li>大屏触控本地操作</li>
+                        <li>线圈长度约 3~5 米</li>
+                        <li>落地式安装</li>
+                        <li>分布式多线圈设计</li>
+                        <li>适用于大流量系统</li>
+                    </ul>
+                </div>
+
+                <!-- 电化学除垢设备 -->
+                <div class="pricing-card featured" style="grid-column: 2 / 3; margin-top: 20px;">
+                    <div class="pricing-badge">安全保障</div>
+                    <div class="pricing-model">电化学除垢</div>
+                    <div class="pricing-name">SMS-D-5000</div>
+                    <div class="pricing-price">
+                        <span class="currency">¥</span>
+                        <span class="amount">200</span>
+                        <div class="unit">万元 / 套</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>对应循环水量 5000m³/h</li>
+                        <li>全自动电化学水处理</li>
+                        <li>处理器 2670×1630×2300mm</li>
+                        <li>PLC柜 300×600×1500mm</li>
+                        <li>输入 380V / 输出 24V</li>
+                        <li>额定功率 30kW</li>
+                        <li>阳极板 15片（贵金属）</li>
+                        <li>全自动液压刮垢</li>
+                        <li>排污管控期安全保障</li>
+                        <li>不含安装及土建施工</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="pricing-note">
+                <strong>说明：</strong>以上价格为设备标准配置价格。电磁阻垢设备含主机、线圈、安装辅材及一年质保；
+                电化学除垢设备含处理器、PLC柜、电源柜、阀门仪表等全套设备，不含现场安装及土建施工。
+                具体安装费用、运输费用及定制化需求根据项目实际情况另行核算。
+                组合方案采购可享受优惠折扣，详情请咨询客户经理。
+            </div>
+        </div>
+    </section>
+
+    <!-- 第十一章：联系方式 -->
+    <section class="content-section">
+        <div class="section-header">
+            <div class="section-number">11</div>
+            <h2 class="section-title">联系方式</h2>
+            <p class="section-subtitle">Contact Us</p>
+        </div>
+
+        <div class="contact-section">
+            <h3 style="font-size: 1.4rem; margin-bottom: 5px;">威马（青岛）新能源科技有限公司</h3>
+            <p style="opacity: 0.8; font-size: 0.95rem;">专业电磁阻垢设备制造商 · 为客户创造价值</p>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">👤</div>
+                    <div class="contact-info">
+                        <div class="label">客户经理</div>
+                        <div class="value">赵峰</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <div class="contact-info">
+                        <div class="label">联系电话</div>
+                        <div class="value">13563432166</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-info">
+                        <div class="label">公司地址</div>
+                        <div class="value" style="font-size: 0.95rem;">济南市莱芜高新区苍龙泉大街008号</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">🏢</div>
+                    <div class="contact-info">
+                        <div class="label">集团背景</div>
+                        <div class="value" style="font-size: 0.95rem;">山东威马集团旗下</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>本方案仅供技术交流，具体实施方案以现场勘察后最终确认为准</p>
+        <p style="margin-top: 8px; font-size: 0.8rem;">威马（青岛）新能源科技有限公司 © 2026 版权所有</p>
+    </footer>
+
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('.toc-list li').forEach((li, index) => {
+            li.addEventListener('click', () => {
+                const sections = document.querySelectorAll('.content-section');
+                if (sections[index]) {
+                    sections[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
