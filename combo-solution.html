@@ -486,9 +486,9 @@
 
         /* ========== 案例 ========== */
         .cases-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
             margin: 40px 0;
         }
 
@@ -499,34 +499,41 @@
             box-shadow: 0 2px 15px rgba(0,0,0,0.04);
             border: 1px solid var(--gray-200);
             transition: transform 0.3s;
+            display: flex;
+            align-items: stretch;
         }
 
         .case-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .case-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
+            width: 40%;
+            object-fit: contain;
+            background: var(--gray-100);
+            min-height: 200px;
         }
 
         .case-content {
-            padding: 20px;
+            padding: 30px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .case-title {
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .case-desc {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--gray-700);
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
         /* ========== 资质 ========== */
@@ -614,7 +621,7 @@
     <section class="cover">
         <div class="cover-content">
             <div class="cover-logo">
-                <img src="https://aka.doubaocdn.com/s/T6UhcTia9o" alt="威马集团">
+                <img src="https://aka.doubaocdn.com/s/wUbmj47sgb" alt="威马集团">
             </div>
             <div class="cover-badge">技术方案</div>
             <h1>循环水系统电磁阻垢方案</h1>
@@ -814,12 +821,12 @@
                     <span class="scheme-tag s2">方案二</span>
                     <div class="scheme-name">总管式电磁阻垢</div>
                     <div class="scheme-desc">2台大功率设备安装在总进水管道，一套覆盖全系统</div>
-                    <div class="scheme-price">185<span class="unit"> 万元</span></div>
+                    <div class="scheme-price">150<span class="unit"> 万元</span></div>
                     <ul class="scheme-features">
                         <li>2台SMS-E-1000设备</li>
                         <li>总管DN1400mm</li>
                         <li>地埋管道，需开挖6-10米</li>
-                        <li>大号机柜，单台4kW</li>
+                        <li>大号机柜，单台75万</li>
                         <li>一套设备覆盖全系统</li>
                     </ul>
                     <div class="scheme-note">⚠️ 需开挖施工，工期较长</div>
@@ -861,7 +868,7 @@
                         <tr><td><strong>施工周期</strong></td><td style="text-align: center;">短（3-5天）</td><td style="text-align: center; color: var(--danger);">长（15-20天）</td><td style="text-align: center; background: #f0f7ff;">中（10-15天）</td></tr>
                         <tr><td><strong>阻垢效果</strong></td><td style="text-align: center;">★★★★☆</td><td style="text-align: center;">★★★★☆</td><td style="text-align: center; background: #f0f7ff; color: var(--success); font-weight: 600;">★★★★★</td></tr>
                         <tr><td><strong>排污管控保障</strong></td><td style="text-align: center; color: var(--danger);">无</td><td style="text-align: center; color: var(--danger);">无</td><td style="text-align: center; background: #f0f7ff; color: var(--success); font-weight: 600;">✅ 有</td></tr>
-                        <tr><td><strong>总投资</strong></td><td style="text-align: center; font-weight: 600;">约180万</td><td style="text-align: center; font-weight: 600;">185万</td><td style="text-align: center; background: #f0f7ff; font-weight: 600; color: var(--primary);">约380万</td></tr>
+                        <tr><td><strong>总投资</strong></td><td style="text-align: center; font-weight: 600;">约180万</td><td style="text-align: center; font-weight: 600;">150万</td><td style="text-align: center; background: #f0f7ff; font-weight: 600; color: var(--primary);">约380万</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -878,7 +885,7 @@
             </div>
 
             <p class="section-desc">
-                在汽轮机、空分主机、冰机等关键用水点分别安装电磁阻垢设备，实现精准覆盖、全系统在线阻垢。
+                在汽轮机、空压机、增压机、冰机等关键用水点分别安装电磁阻垢设备，实现精准覆盖、全系统在线阻垢。
                 管道外部缠绕线圈，无需切割管道，不影响生产运行。
             </p>
 
@@ -898,8 +905,8 @@
                     <tbody>
                         <tr><td>1</td><td><strong>SMS-E-600</strong></td><td>汽轮机1#循环水进水管</td><td>DN600</td><td>1台</td><td>凝汽器</td></tr>
                         <tr><td>2</td><td><strong>SMS-E-600</strong></td><td>汽轮机2#循环水进水管</td><td>DN600</td><td>1台</td><td>凝汽器</td></tr>
-                        <tr><td>3</td><td><strong>SMS-E-500</strong></td><td>空分主机1#循环水进水管</td><td>DN450</td><td>1台</td><td>空压机+空冷塔+氮压机</td></tr>
-                        <tr><td>4</td><td><strong>SMS-E-500</strong></td><td>空分主机2#循环水进水管</td><td>DN450</td><td>1台</td><td>空压机+空冷塔+氧压机</td></tr>
+                        <tr><td>3</td><td><strong>SMS-E-500</strong></td><td>空压机循环水进水管</td><td>DN450</td><td>1台</td><td>空压机+空冷塔</td></tr>
+                        <tr><td>4</td><td><strong>SMS-E-500</strong></td><td>增压机循环水进水管</td><td>DN450</td><td>1台</td><td>增压机+空冷塔</td></tr>
                         <tr><td>5</td><td><strong>SMS-E-200</strong></td><td>空分厂冰机循环水进水管</td><td>DN150</td><td>1台</td><td>冷水机组冷凝器</td></tr>
                         <tr><td>6</td><td><strong>SMS-E-200</strong></td><td>预冷系统冰机循环水进水管</td><td>DN150</td><td>1台</td><td>冷水机组冷凝器</td></tr>
                         <tr class="highlight"><td colspan="4" style="text-align: right;"><strong>合计</strong></td><td style="text-align: center; color: var(--primary);"><strong>6台</strong></td><td></td></tr>
@@ -1153,7 +1160,7 @@
                 <div class="scheme-card">
                     <span class="scheme-tag s2">方案二</span>
                     <div class="scheme-name">总管式电磁</div>
-                    <div class="scheme-price">185<span class="unit"> 万</span></div>
+                    <div class="scheme-price">150<span class="unit"> 万</span></div>
                     <ul class="scheme-features">
                         <li>设备数量少，维护简单</li>
                         <li>一套覆盖全系统</li>
@@ -1398,7 +1405,7 @@
             <div class="device-title">成功案例</div>
             <div class="cases-grid">
                 <div class="case-card">
-                    <img src="https://aka.doubaocdn.com/s/e522cAimN5" alt="案例一" class="case-image">
+                    <img src="https://aka.doubaocdn.com/s/OCEHlU6NfS" alt="案例一" class="case-image">
                     <div class="case-content">
                         <div class="case-title">工业循环水系统</div>
                         <div class="case-desc">
@@ -1408,7 +1415,7 @@
                     </div>
                 </div>
                 <div class="case-card">
-                    <img src="https://aka.doubaocdn.com/s/UERjWmVbdZ" alt="案例二" class="case-image">
+                    <img src="https://aka.doubaocdn.com/s/eGuMCWkk7q" alt="案例二" class="case-image">
                     <div class="case-content">
                         <div class="case-title">化工企业循环水改造</div>
                         <div class="case-desc">
@@ -1418,7 +1425,7 @@
                     </div>
                 </div>
                 <div class="case-card">
-                    <img src="https://aka.doubaocdn.com/s/dR1VAeiZJu" alt="案例三" class="case-image">
+                    <img src="https://aka.doubaocdn.com/s/jp3ufJYmjI" alt="案例三" class="case-image">
                     <div class="case-content">
                         <div class="case-title">大型换热站循环水治理</div>
                         <div class="case-desc">
@@ -1460,11 +1467,11 @@
                 <div class="scheme-card">
                     <span class="scheme-tag s2">方案二</span>
                     <div class="scheme-name">总管式电磁阻垢</div>
-                    <div class="scheme-price">185<span class="unit"> 万元</span></div>
+                    <div class="scheme-price">150<span class="unit"> 万元</span></div>
                     <ul class="scheme-features">
                         <li>SMS-E-1000 × 2台</li>
                         <li>大号落地机柜</li>
-                        <li>单台功率4kW</li>
+                        <li>单台75万元</li>
                         <li>含安装辅材</li>
                         <li>不含开挖土建</li>
                     </ul>
